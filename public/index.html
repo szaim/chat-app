@@ -2,22 +2,28 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>chat</title>
-<!--   <link rel="stylesheet" href="/styles/main.css" /> -->
+  <title>Chat App</title>
+      <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.4/css/bootstrap.min.css" crossorigin="anonymous">
   <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
+  <link rel="stylesheet" href="/styles/styles.css" />
 </head>
+
+
 <body>
-  <div class="container">
-    <div class="login">
-      <h1>Let's chat. Join me!</h1>
-      <form action="/chat.html"> this will direct to the chat app
-        <label for="name">Guest nickname:</label><br/>
-        <input class="inputfield" id="name" type="text" placeholder="What's your name?" name="name"/><br/>
-        <label for="room">Room name:</label><br/>
-        <input class="inputfield" id="room" type="text" placeholder="Room name" name="room"/><br/>
-        <input class="inputbtn" type="submit" value="Join FUN!"/><br/>
-      </form>
+    <div class="login-page">
+      <div class="form">
+        <form class="login-form" action="/chat.html">
+          <input type="text" placeholder="username" name="name" />
+          <input type="password" placeholder="password"/>
+          <button>login</button>
+        </form>
+      </div>
     </div>
-  </div>
+   <script src="https://code.jquery.com/jquery-2.2.3.js" integrity="sha256-laXWtGydpwqJ8JA+X9x2miwmaiKhn8tVmOVEigRNtP4=" crossorigin="anonymous"></script>
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.2.0/js/tether.min.js"  crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.4/js/bootstrap.min.js" crossorigin="anonymous"></script> 
 </body>
 </html>

@@ -10,15 +10,38 @@ var io = require('socket.io')(http); // socket! pass our server as a parameter t
 // use express static to expose a folder
 app.use(express.static(__dirname + '/public'));
 
+var users = [],
+	connections = [];
+
 // Register events on socket connection
 io.on('connection', function(socket){ 
-  socket.on("chatMessage", function(msg) {
-   io.emit("chatMessage", msg);
-  })
-  socket.on('disconnect', function(){
-    console.log('user disconnected');
-  });
+	connections.push(socket);
+	console.log("connected socket", connections.length);
 
+	// disconnect
+	socket.on("disconnect", function() {
+		users.splice(users.indexOf(socket.username), 1);
+		updateUsernames();
+		connections.splice(connections.indexOf(socket), 1);
+		console.log("disconnected socket", connections.length)
+	})
+
+	//send message
+	socket.on("send message", function(data) {
+		console.log(data);
+		io.emit("new message", {msg: data, user: socket.username});
+	})
+
+	// new user
+	socket.on("new user", function(data) {
+		socket.username = data;
+		users.push(socket.username);
+		updateUsernames();
+	})
+
+	function updateUsernames() {
+		io.emit("get users", users);
+	}
 });
 
 http.listen(PORT, function(){
