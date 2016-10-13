@@ -11,7 +11,7 @@
   <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
 </head>
 <body>
-  <div>
+  <div class="container">
     <div class="chatContainer">
 
         <div class="chatHeader">
@@ -21,7 +21,9 @@
         <div class="chatMessages">
           <ul id="messages"></ul>
         </div>
+
         <div class="chatBottom">
+         <span id="notifyUser"></span>
           <form id="chatForm">
             <input type="hidden" id="user" value="" />
             <input id="m" autocomplete="off" " placeholder="Type your message here.." />
@@ -34,7 +36,7 @@
 
      <div class="usersContainer">
        <div class="chatHeader">
-        <h3 class="title">connected users <span></span></h3>    
+        <h3>connected users <span></span></h3>    
       </div>
       <div class="chatMessages">
         <ul id="messages" class="users"></ul>

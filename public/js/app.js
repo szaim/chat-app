@@ -2,7 +2,8 @@ var socket = io();
 
 var messageForm = $("#chatForm");
 var message = $("#messages");
-var name = getUrlParameter('name');;
+var name = getUrlParameter('name');
+// var $user = $("#user");
 
 // var room = getUrlParameter('room');
 $(".title").append(name)
@@ -26,4 +27,20 @@ socket.on("get users", function(data) {
 	}
 
 	$(".users").html(html);
+})
+
+//notify user
+
+
+socket.emit('notify user', name);
+
+
+socket.on("notify user", function(data) {
+	console.log(data.user)
+	if(data.user != name) {
+		$("#notifyUser").text(data.user + " is typing ...")
+	}
+	setTimeout(function() {
+		$("#notifyUser").text('')
+	}, 10000)
 })

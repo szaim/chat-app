@@ -32,6 +32,11 @@ io.on('connection', function(socket){
 		io.emit("new message", {msg: data, user: socket.username});
 	})
 
+	//notify user
+	socket.on("notify user", function(data) {
+		io.emit("notify user", {user: socket.username})
+	})
+
 	// new user
 	socket.on("new user", function(data) {
 		socket.username = data;
