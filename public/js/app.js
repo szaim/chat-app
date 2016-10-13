@@ -3,9 +3,7 @@ var socket = io();
 var messageForm = $("#chatForm");
 var message = $("#messages");
 var name = getUrlParameter('name');
-// var $user = $("#user");
 
-// var room = getUrlParameter('room');
 $(".title").append(name)
 
 messageForm.submit(function() {
@@ -27,20 +25,19 @@ socket.on("get users", function(data) {
 	}
 
 	$(".users").html(html);
-})
-
-//notify user
+});
 
 
-socket.emit('notify user', name);
-
+$("#m").on('keypress', function() {
+	socket.emit('notify user', name);
+});
 
 socket.on("notify user", function(data) {
-	console.log(data.user)
+
 	if(data.user != name) {
 		$("#notifyUser").text(data.user + " is typing ...")
 	}
 	setTimeout(function() {
 		$("#notifyUser").text('')
-	}, 10000)
-})
+	}, 1000)
+});
