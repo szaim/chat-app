@@ -3,6 +3,7 @@ var socket = io();
 var messageForm = $("#chatForm");
 var message = $("#messages");
 var name = getUrlParameter('name');
+var chatroom = getUrlParameter('room');
 
 $(".title").append(name)
 
@@ -13,8 +14,10 @@ messageForm.submit(function() {
 });
 
 socket.on("new message", function(data) {
-  $("#messages").append("<li><span>"+ data.user + "</span>: " + data.msg + "</li>") 
+  $("#messages").append("<li><span>"+ data.user + "</span>: " + data.msg + "</li>")
+
 });
+
 
 socket.emit("new user", name);
 
@@ -41,3 +44,6 @@ socket.on("notify user", function(data) {
 		$("#notifyUser").text('')
 	}, 1000)
 });
+
+
+
