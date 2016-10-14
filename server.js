@@ -10,6 +10,10 @@ var io = require('socket.io')(http); // socket! pass our server as a parameter t
 // use express static to expose a folder
 app.use(express.static(__dirname + '/public'));
 
+app.get('/room', function (req, res) {
+	res.sendfile('./public/index.html');
+});
+
 var users = [],
 	connections = [];
 

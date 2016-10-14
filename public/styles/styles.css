@@ -1,4 +1,100 @@
 @import url(https://fonts.googleapis.com/css?family=Roboto:300);
+/* http://meyerweb.com/eric/tools/css/reset/
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section {
+  display: block;
+}
+body {
+  line-height: 1;
+}
+ol, ul {
+  list-style: none;
+}
+blockquote, q {
+  quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+  content: '';
+  content: none;
+}
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+/***************************************************************************************
+ ************************************ Coherent ems *************************************
+ **************************** http://clagnut.com/blog/348/ ***********************************************************/
+
+html {font-size: 62.5%;} /* sets global font size to 10px on desktop browsers */
+h1 {font-size:3.2rem}
+h2 {font-size:2.4rem}
+h3 {font-size:1.87167rem}
+h4 {font-size:1.6rem}
+h5 {font-size:1.32833rem}
+h6 {font-size:1.07167rem}
+input, select, th, td {font-size:1rem}
+
+/***************************************************************************************
+ *************************************** Styles ****************************************
+ ***************************************************************************************/
+
+body {
+  background: #76b852; /* fallback for old browsers */
+  background: -webkit-linear-gradient(right, #76b852, #8DC26F);
+  background: -moz-linear-gradient(right, #76b852, #8DC26F);
+  background: -o-linear-gradient(right, #76b852, #8DC26F);
+  background: linear-gradient(to left, #76b852, #8DC26F);
+  font-family: "Roboto", sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+#chatform {
+  width: 100%;
+}
+
+#chatForm > input[type="text"] {
+  width: 86%;
+}
+
+#chatForm > input[type="submit"] {
+  width: 10%;
+}
+
+#chatHeader {
+  padding-top: 10px;
+  padding-left: 10px;
+}
+
+/***************************************************************************************
+ *************************************** Login *****************************************
+ ***************************************************************************************/
 
 .login-page {
   width: 360px;
@@ -44,46 +140,38 @@
   background: #43A047;
 }
 
-.container {
-  position: relative;
-  z-index: 1;
-  max-width: 300px;
-  margin: 0 auto;
+/***************************************************************************************
+ ************************************ Positioning **************************************
+ ***************************************************************************************/
+
+#chatHeader {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 50px;
 }
-.container:before, .container:after {
-  content: "";
-  display: block;
-  clear: both;
+
+#user-list {
+  position: fixed;
+  right: 0;
+  top: 0;
+  width: 100px;
+  height: 100%;
 }
-.container .info {
-  margin: 50px auto;
-  text-align: center;
+
+#chatBottom {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 50px;
 }
-.container .info h1 {
-  margin: 0 0 15px;
-  padding: 0;
-  font-size: 36px;
-  font-weight: 300;
-  color: #1a1a1a;
-}
-.container .info span {
-  color: #4d4d4d;
-  font-size: 12px;
-}
-.container .info span a {
-  color: #000000;
-  text-decoration: none;
-}
-.container .info span .fa {
-  color: #EF3B3A;
-}
-body {
-  background: #76b852; /* fallback for old browsers */
-  background: -webkit-linear-gradient(right, #76b852, #8DC26F);
-  background: -moz-linear-gradient(right, #76b852, #8DC26F);
-  background: -o-linear-gradient(right, #76b852, #8DC26F);
-  background: linear-gradient(to left, #76b852, #8DC26F);
-  font-family: "Roboto", sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;      
+
+#chatMessages {
+  position:absolute;
+  margin: 50px;
+  width: auto;
+  height: auto;
+  left: 0;
 }

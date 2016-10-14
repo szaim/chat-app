@@ -3,8 +3,7 @@
         this.user = '';
         this.login = function (event) {
             event.preventDefault();
-            $socket.emit("new user", this.user);
-            $location.url('/room')
+            $location.url('/room?user=' + this.user)
         }
     }]);
 } (angular.module('chatroom')));
