@@ -1,0 +1,29 @@
+<div class="container">
+    <div id="chatHeader">
+        <h1 class="title">Welcome {{::ctrl.username}}</h1>
+
+    </div>
+    <div id="chatMessages">
+        <ul id="messages">
+            <li ng-repeat="message in ctrl.messages"><span>{{message.user}}</span>: {{message.msg}}</li>
+        </ul>
+    </div>
+
+    <div id="chatBottom">
+        <span id="notifyUser" ng-show="ctrl.typer">{{ctrl.typer}} is typing...</span>
+        <form id="chatForm" ng-submit="ctrl.sendMessage($event)">
+            <input type="text" id="m" autocomplete="off" ng-model="ctrl.message" ng-keypress="ctrl.announceUserTyping()" placeholder="Type your message here.." />
+            <input type="submit" id="button" value="Send"/>
+        </form>
+    </div>
+    <div id="user-list">
+        <div class="chatHeader">
+            <h3>connected users <span></span></h3>
+        </div>
+        <div class="chatMessages">
+            <ul id="users">
+                <li ng-repeat="user in ctrl.users">{{user}}</li>
+            </ul>
+        </div>
+    </div>
+</div>
