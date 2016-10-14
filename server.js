@@ -57,8 +57,14 @@ io.on('connection', function(socket){
 			console.log(recipient.id);
 		io.to(recipient.id).emit("received private msg", msg, sender);
 
-		});
+	});
 
+	// socket.on("create room", function(room) {
+	// 	socket.join(room);
+	// 	io.sockets.in(room).emit('event', "hey wusup am in this room");
+	// 	console.log(socket);
+
+	// })
 
 });
 

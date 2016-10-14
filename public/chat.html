@@ -3,18 +3,165 @@
 <head>
   <meta charset="UTF-8">
   <title>Chat App</title>
-      <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.4/css/bootstrap.min.css" crossorigin="anonymous">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.4/css/bootstrap.min.css" crossorigin="anonymous">
   <link rel="stylesheet" href="/styles/main.css" />
   <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
 </head>
 <body>
+  <div class="row pad-whole">
+
+    <div class=" col-lg-6 col-md-6 col-sm-6">
+     <div class="chat-box-div">
+      <div class="chat-box-head">
+        <span> <h3 id="title">Welcome </h3></span>
+      </div>
+      <div class="panel-body chat-box-main">
+        <div class="chat-box-left">
+
+          <div class="messages"></div> 
+
+
+        </div>
+
+      </div>
+      <div class="chat-box-footer">
+        <form id="chatForm">
+          <div class="input-group">
+            <div id="notifyUser" class="notifyUser"></div>
+            <input type="text" id="m" class="form-control" placeholder="Enter Text Here...">
+            <span class="input-group-btn">
+              <input type="hidden" id="user" value="" />
+              <input class="btn btn-info" id="button" type="submit" value="Send"/>
+            </span>
+          </form>
+        </div>
+      </div>
+    </div>
+
+  </div>
+  <div class="col-lg-3 col-md-3 col-sm-3">
+    <div class="chat-box-online-div">
+      <div class="chat-box-online-head">
+        ONLINE USERS (<span id="userCount"></span>)
+      </div>
+      <div class="panel-body chat-box-online">
+        <div class="chat-box-online-left">
+
+          <div class="chatMessages">
+            <div id="users"></div>
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+
+  <div class="col-lg-3 col-md-3 col-sm-3">
+    <div class="chat-box-new-div">
+      <div class="chat-box-new-head">
+        NEW CHATS (4)
+      </div>
+      <div class="panel-body chat-box-new">
+
+      </div>
+
+    </div>
+
+  </div>
+
+
+</div>
+
+
+
+
+
+
+
+<!-- Modal -->
+<div id="myModal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title" id="userName"></h4>
+      </div>
+      <div class="modal-body">
+        <p>Send Here</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+
+
+
+
+<!-- <div class="row">
   <div class="container">
+
+        <div class=" col-lg-6 col-md-6 col-sm-6">
+          <h3 class="title">Welcome <span></span></h3>
+        <div class="chatMessages">
+          <ul id="messages"></ul>
+        </div>
+        <div class="chatBottom">
+         <span id="notifyUser"></span>
+          <form id="chatForm">
+            <input type="hidden" id="user" value="" />
+            <input id="m" autocomplete="off" " placeholder="Type your message here.." />
+            <input type="submit" id="button" value="Send"/> 
+          </form>
+        </div>
+        </div>
+
+    <div class="col-lg-3 col-md-3 col-sm-3">
+        <div class="usersContainer chat-box-online-div">
+       <div class="chatHeader">
+        <h3>connected users <span></span></h3>    
+      </div>
+      <div class="chatMessages">
+        <ul id="messages" class="users"></ul>
+      </div>
+    </div>
+    </div>
+
+
+    <div class="col-lg-3 col-md-3 col-sm-3">
+        <div class="usersContainer pull-right">
+       <div class="chatHeader">
+        <h3>connected users <span></span></h3>    
+      </div>
+      <div class="chatMessages">
+        <ul id="messages" class="users"></ul>
+      </div>
+    </div>
+    </div>
+
+
+  </div>
+</div> -->
+
+
+
+
+<!-- 
+  <div class="container">
+
     <div class="chatContainer">
 
-        <div class="chatHeader">
+        <div class="chatHeader col-md-4">
           <h3 class="title">Welcome <span></span></h3>
             
         </div>
@@ -34,7 +181,7 @@
 
     </div>
 
-     <div class="usersContainer">
+     <div class="usersContainer ">
        <div class="chatHeader">
         <h3>connected users <span></span></h3>    
       </div>
@@ -42,13 +189,18 @@
         <ul id="messages" class="users"></ul>
       </div>
     </div>
-  </div>
 
-  <script src="https://code.jquery.com/jquery-2.2.3.js" integrity="sha256-laXWtGydpwqJ8JA+X9x2miwmaiKhn8tVmOVEigRNtP4=" crossorigin="anonymous"></script>
-  <script src="https://cdn.socket.io/socket.io-1.4.5.js"></script>
-  <script src="/js/queryparams.js"></script>
-  <script src="/js/app.js"></script>
-   <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.2.0/js/tether.min.js"  crossorigin="anonymous"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.4/js/bootstrap.min.js" crossorigin="anonymous"></script> 
+  </div>
+-->
+
+
+
+
+<script src="https://code.jquery.com/jquery-2.2.3.js" integrity="sha256-laXWtGydpwqJ8JA+X9x2miwmaiKhn8tVmOVEigRNtP4=" crossorigin="anonymous"></script>
+<script src="https://cdn.socket.io/socket.io-1.4.5.js"></script>
+<script src="/js/queryparams.js"></script>
+<script src="/js/app.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.2.0/js/tether.min.js"  crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.4/js/bootstrap.min.js" crossorigin="anonymous"></script> 
 </body>
 </html>
